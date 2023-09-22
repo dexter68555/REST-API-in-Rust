@@ -6,11 +6,10 @@ use tokio::sync::Mutex;
 
 use crate::model::Customer;
 
-/// Represents an in memory data store of customer data
+// Represents an in memory data store of customer data
 pub type Db = Arc<Mutex<Vec<Customer>>>;
 
-/// Initializes the data store
-/// Returns a Db type that either contains customer data or is empty.
+// Initializes the data store and returns a Db type that either contains customer data or is empty.
 pub fn init_db() -> Db {
     let file = File::open("customer.json");
     match file {
