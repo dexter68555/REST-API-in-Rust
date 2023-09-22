@@ -5,7 +5,7 @@ use crate::db::Db;
 use crate::handler;
 use crate::model::Customer;
 
-/// All customer routes
+// All customer routes
 pub fn customer_routes(
     db: Db,
 ) -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone {
@@ -16,7 +16,7 @@ pub fn customer_routes(
         .or(customers_list(db))
 }
 
-/// GET customers
+// GET customers
 fn customers_list(
     db: Db,
 ) -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone {
@@ -26,7 +26,7 @@ fn customers_list(
         .and_then(handler::list_customers)
 }
 
-/// POST create customers
+// POST Create customers
 fn create_customer(
     db: Db,
 ) -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone {
@@ -37,7 +37,7 @@ fn create_customer(
         .and_then(handler::create_customer)
 }
 
-/// GET /customers/{id}
+// GET /customers/{id}
 fn get_customer(
     db: Db,
 ) -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone {
@@ -47,7 +47,7 @@ fn get_customer(
         .and_then(handler::get_customer)
 }
 
-/// PUT update customer
+// PUT update customer
 fn update_customer(
     db: Db,
 ) -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone {
@@ -58,7 +58,7 @@ fn update_customer(
         .and_then(handler::update_customer)
 }
 
-/// DELETE customer
+// DELETE customer
 fn delete_customer(
     db: Db
 ) -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone {
